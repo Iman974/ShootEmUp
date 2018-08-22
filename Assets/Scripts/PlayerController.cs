@@ -2,31 +2,9 @@
 
 public class PlayerController : MonoBehaviour {
 
-    [System.Serializable]
-    private struct Limits {
-
-        [SerializeField] private float minX;
-        public float MinX { get { return minX; } }
-
-        [SerializeField] private float maxX;
-        public float MaxX { get { return maxX; } }
-
-        [SerializeField] private float minY;
-        public float MinY { get { return minY; } }
-
-        [SerializeField] private float maxY;
-        public float MaxY { get { return maxY; } }
-
-        public Limits(float minX, float maxX, float minY, float maxY) {
-            this.minX = minX;
-            this.maxX = maxX;
-            this.minY = minY;
-            this.maxY = maxY;
-        }
-    }
 
     [SerializeField] private Vector2 moveSpeed = Vector2.one * 8f;
-    [SerializeField] private Limits limits = new Limits(-5f, 5f, -6f, 1f);
+    [SerializeField] private Rect limit = new Rect(-6.2f, -4.6f, 12.4f, 4.5f);
 
     private Rigidbody2D rb2D;
     private bool doMove;
@@ -59,6 +37,12 @@ public class PlayerController : MonoBehaviour {
         }
 
         rb2D.position += axesInput;
-        rb2D.position = VectorUtility.Clamp(rb2D.position, limits.MinX, limits.MaxX, limits.MinY, limits.MaxY);
+        rb2D.position = VectorUtility.Clamp(rb2D.position, limit);
+    }
+
+    private void OnDrawGizmosSelected() {
+        Gizmos.color = Color.cyan;
+        Gizmos.DrawWireCube(limit.center, limit.size);
+        // test
     }
 }

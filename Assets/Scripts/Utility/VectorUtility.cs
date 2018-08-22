@@ -2,19 +2,23 @@
 
 public static class VectorUtility {
 
-    public static Vector2 Clamp(Vector2 vector, float minX, float maxX, float minY, float maxY) {
-        if (vector.x < minX) {
-            vector.x = minX;
-        } else if (vector.x > maxX) {
-            vector.x = maxX;
+    public static Vector2 Clamp(Vector2 vector, float xMin, float xMax, float yMin, float yMax) {
+        if (vector.x < xMin) {
+            vector.x = xMin;
+        } else if (vector.x > xMax) {
+            vector.x = xMax;
         }
 
-        if (vector.y < minY) {
-            vector.y = minY;
-        } else if (vector.y > maxY) {
-            vector.y = maxY;
+        if (vector.y < yMin) {
+            vector.y = yMin;
+        } else if (vector.y > yMax) {
+            vector.y = yMax;
         }
 
         return vector;
+    }
+
+    public static Vector2 Clamp(Vector2 vector, Rect limit) {
+        return Clamp(vector, limit.xMin, limit.xMax, limit.yMin, limit.yMax);
     }
 }

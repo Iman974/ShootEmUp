@@ -218,6 +218,34 @@ Transform:
   m_Father: {fileID: 1462669865}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1318337232
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1318337233}
+  m_Layer: 0
+  m_Name: Target
+  m_TagString: Untagged
+  m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1318337233
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1318337232}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.84, y: 2.07, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1462669863
 GameObject:
   m_ObjectHideFlags: 0
@@ -310,11 +338,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: {x: 8, y: 8}
-  limits:
-    minX: -6.25
-    maxX: 6.25
-    minY: -4.7
-    maxY: 0
+  limit:
+    serializedVersion: 2
+    x: -6.2
+    y: -4.6
+    width: 12.4
+    height: 4.5
 --- !u!50 &1462669867
 Rigidbody2D:
   serializedVersion: 4
@@ -373,7 +402,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 185d77a6d98b66d41b329de7ba34d9ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  missilePrefab: {fileID: 1894574608729522, guid: e306fd6a3ee3a234daf5c3e4970a059c,
+  missilePrefab: {fileID: 1894574608729522, guid: e6e612acb3f796d4781fdc608ff4b91d,
     type: 2}
   shootKey: 101
   launchTransform: {fileID: 1215903498}
