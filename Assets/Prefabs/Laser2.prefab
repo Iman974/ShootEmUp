@@ -99,11 +99,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 880285c1032980342bec9f4db8896257, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 5
+  moveSpeed: 3
+  moveDirection: {x: 0, y: 1}
   homingStartDistance: 2
-  homingForce: 0.2
-  target: {fileID: 0}
-  moveDirection: {x: 0, y: 0}
+  homingIntensity: 0.03
 --- !u!212 &212796927442989884
 SpriteRenderer:
   m_ObjectHideFlags: 1
