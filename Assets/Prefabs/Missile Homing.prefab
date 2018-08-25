@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 50322523395347938}
   - component: {fileID: 114781874538668324}
   m_Layer: 8
-  m_Name: Laser2
+  m_Name: Missile Homing
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -62,7 +62,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 5
+  m_Constraints: 0
 --- !u!61 &61759991078249484
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -99,10 +99,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 880285c1032980342bec9f4db8896257, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 3
+  moveSpeed: 1.25
   moveDirection: {x: 0, y: 1}
   homingStartDistance: 2
-  homingIntensity: 0.03
+  rotationSpeed: 60
+  homingCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 1
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 1
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!212 &212796927442989884
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -13,15 +13,14 @@ public abstract class MissileMover : MonoBehaviour {
 
     protected virtual void Start() {
         moveDirection.Normalize();
+        rb2D.velocity = moveDirection * moveSpeed;
     }
 
     private void FixedUpdate() {
         Move();
     }
 
-    protected virtual void Move() {
-        rb2D.position += moveDirection * moveSpeed * Time.fixedDeltaTime;
-    }
+    protected virtual void Move() { }
 
     private void OnBecameInvisible() {
         Destroy(gameObject);
