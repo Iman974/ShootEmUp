@@ -3,12 +3,22 @@
 public class MissileShooter : MonoBehaviour {
 
     [SerializeField] private GameObject missilePrefab;
-    [SerializeField] private KeyCode shootKey = KeyCode.E;
     [SerializeField] private Transform launchTransform;
+    [SerializeField] private ShipControls controls;
+
+    public Quaternion ShootDirection { get; set; }
+
+    private void Start() {
+        ShootDirection = Quaternion.identity;
+    }
 
     private void Update() {
-        if (Input.GetKeyDown(shootKey)) {
-            Instantiate(missilePrefab, launchTransform.position, Quaternion.identity);
+        if (controls.DoShoot()) {
+            Shoot();
         }
+    }
+
+    private void Shoot() {
+        Instantiate(missilePrefab, launchTransform.position, ShootDirection);
     }
 }

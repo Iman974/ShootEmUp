@@ -13,7 +13,7 @@ public abstract class MissileMover : MonoBehaviour {
 
     protected virtual void Start() {
         moveDirection.Normalize();
-        rb2D.velocity = moveDirection * moveSpeed;
+        rb2D.velocity = transform.up * moveSpeed;
     }
 
     private void FixedUpdate() {

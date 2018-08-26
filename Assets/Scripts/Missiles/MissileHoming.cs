@@ -4,7 +4,6 @@ public class MissileHoming : MissileMover {
 
     [SerializeField] private float homingStartDistance = 5f;
     [SerializeField] private float rotationSpeed = 1f;
-    [SerializeField] private AnimationCurve homingCurve = AnimationCurve.Linear(0f, 0f, 1f, 1f);
 
     private Transform target;
     private bool doTargetDetection = true;
