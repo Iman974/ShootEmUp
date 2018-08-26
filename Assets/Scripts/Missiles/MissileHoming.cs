@@ -2,7 +2,7 @@
 
 public class MissileHoming : MissileMover {
 
-    [SerializeField] private float homingStartDistance = 5f;
+    [SerializeField] private float homingStartDistance = 2f;
     [SerializeField] private float rotationSpeed = 1f;
 
     private Transform target;
@@ -27,8 +27,8 @@ public class MissileHoming : MissileMover {
             }
         } else {
             toTarget = ((Vector2)target.position - rb2D.position).normalized; // Is .Normalize() faster ?
-            rb2D.angularVelocity = Vector3.Cross(transform.up, toTarget).z * rotationSpeed;
-            rb2D.velocity = transform.up;
+            rb2D.angularVelocity = Vector3.Cross(transform.up, toTarget).z * rotationSpeed; // vs rotation ??
+            rb2D.velocity = transform.up * moveSpeed;
         }
 
         base.Move();

@@ -9,7 +9,7 @@ public class ShipController : MonoBehaviour {
     private Rigidbody2D rb2D;
     private Vector2 movement;
 
-    public Vector2 Movement { set { movement = value; } }
+    public Vector2 Velocity { set { movement = value; } }
     //public Vector2 MoveSpeed { get { return moveSpeed; } }
 
     private void Awake() {

@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 212796927442989884}
   - component: {fileID: 61759991078249484}
   - component: {fileID: 50322523395347938}
-  - component: {fileID: 114781874538668324}
+  - component: {fileID: 114152424110321712}
   m_Layer: 8
   m_Name: Missile Homing
   m_TagString: Untagged
@@ -88,7 +88,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &114781874538668324
+--- !u!114 &114152424110321712
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -96,37 +96,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1894574608729522}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 880285c1032980342bec9f4db8896257, type: 3}
+  m_Script: {fileID: 11500000, guid: 0126c1d84c6aec546820b26021a03359, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 1.25
+  moveSpeed: 2.5
   moveDirection: {x: 0, y: 1}
   homingStartDistance: 2
-  rotationSpeed: 60
-  homingCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 1
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 1
-      value: 1
-      inSlope: 1
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
+  rotationSpeed: 50
 --- !u!212 &212796927442989884
 SpriteRenderer:
   m_ObjectHideFlags: 1
