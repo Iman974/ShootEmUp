@@ -11,4 +11,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88bf7091f8b442f4e84c61c82191b8ef, type: 3}
   m_Name: Enemy Controls
   m_EditorClassIdentifier: 
-  fireRate: 1
+  fireRate: 1.5
+  distanceToShoot: 4
