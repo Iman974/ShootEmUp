@@ -11,4 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff41995b6d5705740a7f650358b107ba, type: 3}
   m_Name: Player Controls
   m_EditorClassIdentifier: 
-  shootKey: 101
+  shootKey: 122
+  rotateClockwiseKey: 101
+  rotateCounterclockwiseKey: 97
+  rotationSpeed: 1.78

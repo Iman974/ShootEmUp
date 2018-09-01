@@ -7,12 +7,12 @@ public class ShipController : MonoBehaviour {
     [SerializeField] private ShipControls controls;
 
     private Rect movementArea;
+    private Rigidbody2D rb2D;
 
     public Vector2 Velocity { get; set; }
-    public Rigidbody2D Rb2D { get; private set; }
 
     private void Awake() {
-        Rb2D = GetComponent<Rigidbody2D>();
+        rb2D = GetComponent<Rigidbody2D>();
         controls.Initialize(this);
     }
 
@@ -31,8 +31,8 @@ public class ShipController : MonoBehaviour {
     }
 
     private void Move() {
-        Rb2D.position += Velocity;
-        Rb2D.position = VectorUtility.Clamp(Rb2D.position, movementArea);
+        rb2D.position += Velocity;
+        rb2D.position = VectorUtility.Clamp(rb2D.position, movementArea);
     }
 
     private void OnDrawGizmosSelected() {

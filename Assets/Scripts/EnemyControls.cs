@@ -7,8 +7,6 @@ public class EnemyControls : ShipControls {
     [Tooltip("Enemy Properties")]
     [SerializeField] private float distanceToShoot = 7f;
     [SerializeField] private float rotationSpeed = 50f;
-    //[SerializeField] [Range(0f, 359.99f)] private float shootAngle = 359.99f; // actually, it is the x absolute distance from the target
-    //[SerializeField] private float slowDownSpeed = 0.2f;
 
     private float countdown;
     private float sqrDistanceToShoot;
@@ -22,7 +20,7 @@ public class EnemyControls : ShipControls {
         countdown = fireRate;
         transform = controller.transform;
         playerTransform = PlayerInfo.Transform;
-        rb2D = controller.Rb2D;
+        rb2D = controller.GetComponent<Rigidbody2D>();
     }
 
     public override void SetMovement() {
@@ -30,9 +28,6 @@ public class EnemyControls : ShipControls {
 
         if (toPlayer.sqrMagnitude > sqrDistanceToShoot) {
             controller.Velocity = toPlayer.normalized;
-        } else {
-            //Debug.Log(controller.Velocity);
-            //controller.Velocity = Vector2.MoveTowards(controller.Velocity, Vector2.zero, slowDownSpeed);
         }
         rb2D.angularVelocity = Vector3.Cross(transform.up, toPlayer).z * rotationSpeed;
     }
