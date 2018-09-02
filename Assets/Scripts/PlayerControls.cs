@@ -7,9 +7,11 @@ public class PlayerControls : ShipControls {
     [SerializeField] private KeyCode rotateClockwiseKey = KeyCode.E;
     [SerializeField] private KeyCode rotateCounterclockwiseKey = KeyCode.A;
     [SerializeField] private float rotationSpeed = 1f;
+    [SerializeField] [Range(0f, 1f)] private float acceleration = 0.2f;
 
     private Vector2 axesInput;
     private Rigidbody2D rb2D;
+    private float moveSpeed;
 
     public override void Initialize(ShipController shipController) {
         base.Initialize(shipController);
@@ -19,7 +21,12 @@ public class PlayerControls : ShipControls {
     public override void SetMovement() {
         axesInput.x = Input.GetAxisRaw("Horizontal");
         axesInput.y = Input.GetAxisRaw("Vertical");
-        controller.Velocity = axesInput;
+        if (axesInput != Vector2.zero) {
+            moveSpeed = Mathf.MoveTowards(moveSpeed, 1f, acceleration);
+            controller.Velocity = axesInput * moveSpeed;
+        } else {
+            moveSpeed = 0f;
+        }
 
         if (Input.GetKey(rotateClockwiseKey)) {
             rb2D.rotation += rotationSpeed;

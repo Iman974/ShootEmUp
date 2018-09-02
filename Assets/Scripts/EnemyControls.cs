@@ -13,6 +13,7 @@ public class EnemyControls : ShipControls {
     private Transform transform;
     private Transform playerTransform;
     private Rigidbody2D rb2D;
+    private float toPlayerDistance;
 
     public override void Initialize(ShipController shipController) {
         base.Initialize(shipController);
@@ -25,8 +26,8 @@ public class EnemyControls : ShipControls {
 
     public override void SetMovement() {
         Vector2 toPlayer = playerTransform.position - transform.position;
-
-        if (toPlayer.sqrMagnitude > sqrDistanceToShoot) {
+        toPlayerDistance = toPlayer.sqrMagnitude;
+        if (toPlayerDistance > sqrDistanceToShoot) {
             controller.Velocity = toPlayer.normalized;
         }
         rb2D.angularVelocity = Vector3.Cross(transform.up, toPlayer).z * rotationSpeed;
@@ -37,7 +38,7 @@ public class EnemyControls : ShipControls {
 
         if (countdown <= 0f) {
             countdown = fireRate;
-            return true;
+            return toPlayerDistance <= sqrDistanceToShoot;
         }
 
         return false;
