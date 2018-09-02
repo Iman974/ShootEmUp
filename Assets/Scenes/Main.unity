@@ -390,7 +390,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f19e81d99445ec49973c214a28e0869, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: {x: 8, y: 8}
+  moveSpeed: {x: 5, y: 5}
   controls: {fileID: 11400000, guid: 6686f6b7a27546445a26a9ed1f385009, type: 2}
 --- !u!50 &1462669867
 Rigidbody2D:

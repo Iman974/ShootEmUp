@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Name: Player Controls
   m_EditorClassIdentifier: 
   shootKey: 122
-  rotateClockwiseKey: 101
-  rotateCounterclockwiseKey: 97
+  rotateClockwiseKey: 97
+  rotateCounterclockwiseKey: 101
   rotationSpeed: 1.78
+  acceleration: 0.048
