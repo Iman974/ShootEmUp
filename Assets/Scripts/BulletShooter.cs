@@ -6,30 +6,32 @@ public class BulletShooter : MonoBehaviour {
     [SerializeField] private Vector3 launchPoint = new Vector3(0.52f, 0f);
     [SerializeField] private Transform bulletContainer;
 
-    [SerializeField] private Bullet[] bullets;
+    [SerializeField] private Weapon[] bullets;
 
-    private Bullet selectedBullet;
+    private Weapon selectedWeapon;
     private float nextFireTime;
 
     private void Start() {
         UnityEngine.Assertions.Assert.IsTrue(bullets.Length > 0, "Bullets array is empty!");
-        selectedBullet = bullets[0];
+        selectedWeapon = bullets[0];
     }
 
     private void Update() {
-        if (Time.time >= nextFireTime) {
-            Shoot();
-            nextFireTime = Time.time + selectedBullet.FireRate;
+        if (Time.time < nextFireTime) {
+            return;
         }
+
+        Shoot();
+        nextFireTime = Time.time + selectedWeapon.FireRate;
     }
 
     private void Shoot() {
         Rigidbody2D bulletRb = Instantiate(bulletPrefab, transform.position + launchPoint, Quaternion.identity, bulletContainer);
-        bulletRb.AddForce(Vector2.right * selectedBullet.MoveSpeed, ForceMode2D.Impulse);
+        selectedWeapon.SetPropertiesOfBullet(bulletRb);
     }
 
     private void SwitchBullet(int bulletIndex) {
-        selectedBullet = bullets[0];
+        selectedWeapon = bullets[0];
     }
 
     private void OnDrawGizmosSelected() {

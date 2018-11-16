@@ -11,5 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 830d86ab4c5398a499dfa0cced1c570e, type: 3}
   m_Name: Simple
   m_EditorClassIdentifier: 
-  moveSpeed: 10
-  fireRate: 5
+  bulletSpeed: 10
+  fireRate: 0.15
+  bulletPerShot: 1
+  gravityScale: 0
