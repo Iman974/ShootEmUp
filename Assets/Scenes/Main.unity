@@ -400,5 +400,5 @@ MonoBehaviour:
     type: 2}
   launchPoint: {x: 0.52, y: 0, z: 0}
   bulletContainer: {fileID: 702028408}
-  bullets:
-  - {fileID: 11400000, guid: 45593df07b4623d49b66cedbe5b25c0d, type: 2}
+  weapons:
+  - {fileID: 11400000, guid: 3344d62158d298b4bbd359b2a38422c8, type: 2}

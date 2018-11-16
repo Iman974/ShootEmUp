@@ -6,14 +6,17 @@ public class BulletShooter : MonoBehaviour {
     [SerializeField] private Vector3 launchPoint = new Vector3(0.52f, 0f);
     [SerializeField] private Transform bulletContainer;
 
-    [SerializeField] private Weapon[] bullets;
+    [SerializeField] private Weapon[] weapons;
 
     private Weapon selectedWeapon;
     private float nextFireTime;
 
     private void Start() {
-        UnityEngine.Assertions.Assert.IsTrue(bullets.Length > 0, "Bullets array is empty!");
-        selectedWeapon = bullets[0];
+        if (weapons.Length == 0) {
+            Debug.LogError("Bullets array is empty!");
+            enabled = false;
+        }
+        selectedWeapon = weapons[0];
     }
 
     private void Update() {
@@ -26,12 +29,15 @@ public class BulletShooter : MonoBehaviour {
     }
 
     private void Shoot() {
-        Rigidbody2D bulletRb = Instantiate(bulletPrefab, transform.position + launchPoint, Quaternion.identity, bulletContainer);
-        selectedWeapon.SetPropertiesOfBullet(bulletRb);
+        Rigidbody2D[] rb2Ds = new Rigidbody2D[selectedWeapon.BulletPerShot];
+        for (int i = 0; i < selectedWeapon.BulletPerShot; i++) {
+            rb2Ds[i] = Instantiate(bulletPrefab, transform.position + launchPoint, Quaternion.identity, bulletContainer);
+        }
+        selectedWeapon.SetPropertiesOfBullets(rb2Ds);
     }
 
     private void SwitchBullet(int bulletIndex) {
-        selectedWeapon = bullets[0];
+        selectedWeapon = weapons[0];
     }
 
     private void OnDrawGizmosSelected() {
