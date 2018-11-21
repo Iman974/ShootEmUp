@@ -13,5 +13,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletSpeed: 10
   fireRate: 0.15
-  bulletPerShot: 1
   gravityScale: 0
