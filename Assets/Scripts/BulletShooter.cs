@@ -2,15 +2,19 @@
 
 public class BulletShooter : MonoBehaviour {
 
-    [SerializeField] private Vector3 launchPoint = new Vector3(0.52f, 0f);
-    [SerializeField] private Weapon[] weapons;
+    [SerializeField] private Transform launchPoint;
+    [SerializeField] private float fireRate = 0.15f;
+    [SerializeField] private float speed = 2f;
+    //[SerializeField] private Weapon[] weapons;
 
-    private Weapon selectedWeapon;
+    //private Weapon selectedWeapon;
     private float nextFireTime;
+    private Rigidbody2D selfRb2D;
 
     private void Start() {
-        UnityEngine.Assertions.Assert.IsTrue(weapons.Length > 0, "Bullets array is empty!");
-        selectedWeapon = weapons[0];
+        //UnityEngine.Assertions.Assert.IsTrue(weapons.Length > 0, "Bullets array is empty!");
+        //selectedWeapon = weapons[0];
+        selfRb2D = GetComponent<Rigidbody2D>();
     }
 
     private void Update() {
@@ -19,17 +23,23 @@ public class BulletShooter : MonoBehaviour {
         }
 
         Shoot();
-        nextFireTime = Time.time + selectedWeapon.FireRate;
+        nextFireTime = Time.time + fireRate;
     }
 
     private void Shoot() {
         Rigidbody2D bulletRb = BulletPool.GetAvailableBullet();
-        bulletRb.transform.position = transform.position + launchPoint;
-        selectedWeapon.SetPropertiesOfBullet(bulletRb);
+
+        float rotation = ShipController.Rotation;
+        bulletRb.position = launchPoint.position;
+        bulletRb.rotation = rotation;
+        bulletRb.velocity = selfRb2D.position * speed;
     }
 
-    private void OnDrawGizmosSelected() {
+    private void OnDrawGizmos() {
+        if (launchPoint == null) {
+            return;
+        }
         Gizmos.color = Color.magenta;
-        Gizmos.DrawSphere(transform.position + launchPoint, 0.1f);
+        Gizmos.DrawSphere(launchPoint.position, 0.07f * transform.localScale.x);
     }
 }

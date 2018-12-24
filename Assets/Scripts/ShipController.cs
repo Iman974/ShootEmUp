@@ -3,13 +3,22 @@
 [RequireComponent(typeof(Rigidbody2D))]
 public class ShipController : MonoBehaviour {
 
-    [SerializeField] private Vector2 moveSpeed = Vector2.one * 6f;
+    [SerializeField] private float moveSpeed = 4f;
 
-    private Vector2 velocity;
+    private float angularVelocity;
+    private Rigidbody2D rb2D;
+    private float startRotation;
+
+    public static float Rotation { get; private set; }
+
+    private void Start() {
+        rb2D = GetComponent<Rigidbody2D>();
+        startRotation = rb2D.rotation;
+    }
 
     private void Update() {
-        velocity = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
-        velocity *= moveSpeed * Time.deltaTime;
+        angularVelocity = Input.GetAxisRaw("Horizontal");
+        angularVelocity *= moveSpeed * Time.deltaTime * Mathf.Deg2Rad;
     }
 
     private void FixedUpdate() {
@@ -17,6 +26,10 @@ public class ShipController : MonoBehaviour {
     }
 
     private void Move() {
-        transform.position += (Vector3)velocity;
+        Vector2 newPosition = Matrix2x2.CreateRotation(angularVelocity) * rb2D.position;
+        rb2D.MovePosition(newPosition);
+        // Atan2 function might be removable (find other method)
+        Rotation = Mathf.Atan2(newPosition.y, newPosition.x) * Mathf.Rad2Deg;
+        rb2D.rotation = Rotation + startRotation;
     }
 }
