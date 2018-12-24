@@ -9,8 +9,6 @@ public class ShipController : MonoBehaviour {
     private Rigidbody2D rb2D;
     private float startRotation;
 
-    public static float Rotation { get; private set; }
-
     private void Start() {
         rb2D = GetComponent<Rigidbody2D>();
         startRotation = rb2D.rotation;
@@ -28,8 +26,6 @@ public class ShipController : MonoBehaviour {
     private void Move() {
         Vector2 newPosition = Matrix2x2.CreateRotation(angularVelocity) * rb2D.position;
         rb2D.MovePosition(newPosition);
-        // Atan2 function might be removable (find other method)
-        Rotation = Mathf.Atan2(newPosition.y, newPosition.x) * Mathf.Rad2Deg;
-        rb2D.rotation = Rotation + startRotation;
+        transform.up = newPosition;
     }
 }

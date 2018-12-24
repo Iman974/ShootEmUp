@@ -4,7 +4,7 @@ using System.Collections.Generic;
 public class BulletPool : MonoBehaviour {
 
     [SerializeField] private int bulletCount = 50;
-    [SerializeField] private Rigidbody2D bulletPrefab;
+    [SerializeField] private Rigidbody2D bulletPrefab = null;
 
     private static List<Rigidbody2D> unavailableBullets = new List<Rigidbody2D>();
     private static List<Rigidbody2D> availableBullets = new List<Rigidbody2D>();
