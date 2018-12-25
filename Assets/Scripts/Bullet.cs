@@ -10,10 +10,16 @@ public class Bullet : MonoBehaviour {
     }
 
     private void OnBecameInvisible() {
-        BulletPool.ReleaseBullet(rigidbody2D);
+        Destroy(gameObject);
     }
 
-    private void OnTriggerEnter2D(Collider2D collision) {
-        // Check for ennemy vessel
+    private void OnTriggerEnter2D(Collider2D other) {
+        if (other.CompareTag("Player")) {
+            //Implement player collision here (lower health)
+        } else if (other.CompareTag("Enemy")) {
+            //Handle enemy health (multiple shots to kill it) later
+            EnemySpawner.OnEnemyDestroyedEvent?.Invoke(other.transform);
+            Destroy(other.gameObject);
+        }
     }
 }

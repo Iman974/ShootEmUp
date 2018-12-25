@@ -121,7 +121,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 100403080}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: LaunchPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -234,9 +234,10 @@ GameObject:
   m_Component:
   - component: {fileID: 597340941}
   - component: {fileID: 597340940}
-  m_Layer: 0
+  - component: {fileID: 597340942}
+  m_Layer: 10
   m_Name: Tower
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -303,6 +304,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!58 &597340942
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 597340939}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.5
 --- !u!1 &702028407
 GameObject:
   m_ObjectHideFlags: 0
@@ -346,8 +363,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b9a69b90551d41498f1067aecf09447, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletCount: 100
-  bulletPrefab: {fileID: 50313753781006160, guid: 844a3ff3b602fe74d960f208ea3ff597,
+  enemyBulletCount: 80
+  enemyBulletPrefab: {fileID: 50313753781006160, guid: 844a3ff3b602fe74d960f208ea3ff597,
+    type: 3}
+  playerBulletCount: 20
+  playerBulletPrefab: {fileID: 50313753781006160, guid: c91eb72ed84382845bffb94229ca6462,
     type: 3}
 --- !u!1 &1190243579
 GameObject:
@@ -394,10 +414,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyPrefab: {fileID: 4683347730347223363, guid: 1711d93074649894cba04ff22d3c2f35,
     type: 3}
-  minSpawnDistance: 7
-  maxSpawnDistance: 10
-  testFrequency: 3
+  minSpawnDistance: 8.5
+  maxSpawnDistance: 11
+  testFrequency: 2
   triggerProbability: 0.1
+  maxEnemiesOnScreen: 10
+  clearSightLineTolerance: 0.985
 --- !u!1 &1462669863
 GameObject:
   m_ObjectHideFlags: 0
@@ -412,9 +434,9 @@ GameObject:
   - component: {fileID: 1462669867}
   - component: {fileID: 1462669866}
   - component: {fileID: 1462669869}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: PlayerShip
-  m_TagString: Player
+  m_TagString: GameController
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -559,3 +581,4 @@ MonoBehaviour:
   launchPoint: {fileID: 100403080}
   fireRate: 0.2
   speed: 10
+  isEnemy: 0
