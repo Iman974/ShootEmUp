@@ -24,7 +24,7 @@ public class ShipController : MonoBehaviour {
     }
 
     private void Move() {
-        Vector2 newPosition = Matrix2x2.CreateRotation(angularVelocity) * rb2D.position;
+        Vector2 newPosition = Matrix2x2.CreateRotation(-angularVelocity) * rb2D.position;
         rb2D.MovePosition(newPosition);
         transform.up = newPosition;
     }

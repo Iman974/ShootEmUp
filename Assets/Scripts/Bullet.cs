@@ -3,11 +3,7 @@
 [RequireComponent(typeof(Rigidbody2D))]
 public class Bullet : MonoBehaviour {
 
-    new private Rigidbody2D rigidbody2D;
-
-    private void Start() {
-        rigidbody2D = GetComponent<Rigidbody2D>();
-    }
+    [SerializeField] private int damage = 50;
 
     private void OnBecameInvisible() {
         Destroy(gameObject);
@@ -18,8 +14,8 @@ public class Bullet : MonoBehaviour {
             //Implement player collision here (lower health)
         } else if (other.CompareTag("Enemy")) {
             //Handle enemy health (multiple shots to kill it) later
-            EnemySpawner.OnEnemyDestroyedEvent?.Invoke(other.transform);
-            Destroy(other.gameObject);
+            other.GetComponent<Health>().TakeDamage(damage);
+            Destroy(gameObject);
         }
     }
 }

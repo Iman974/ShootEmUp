@@ -40,7 +40,7 @@ public class EnemySpawner : MonoBehaviour {
             if (++i > 15) {
                 Debug.LogError("Empty spot for spawning could not be found!");
                 return;
-            } else if (i > 1) Debug.LogWarning("Regenerated spawn direction.");
+            } /*else if (i > 1) Debug.LogWarning("Regenerated spawn direction.");*/
         } while (spawnDirections.Exists(t => Vector2.Dot(t.position.normalized, unitVector) >= clearSightLineTolerance));
         Vector2 spawnPosition = unitVector * Random.Range(minSpawnDistance, maxSpawnDistance);
         //Debug.DrawRay(Vector3.zero, unitVector, Color.red, 1.5f);

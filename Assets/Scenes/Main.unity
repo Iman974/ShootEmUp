@@ -235,6 +235,7 @@ GameObject:
   - component: {fileID: 597340941}
   - component: {fileID: 597340940}
   - component: {fileID: 597340942}
+  - component: {fileID: 597340943}
   m_Layer: 10
   m_Name: Tower
   m_TagString: Player
@@ -320,6 +321,18 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &597340943
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 597340939}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45c37672b5213ca4aa9637a41e24db76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &702028407
 GameObject:
   m_ObjectHideFlags: 0
